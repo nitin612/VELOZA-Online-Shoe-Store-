@@ -9,17 +9,26 @@ import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
+  Text
 } from 'react-native';
 import Header from "./src/components/HeaderComponent"
+import RootStack from './src/routes/RootStack'
+import BottomTab from "./src/components/BottomTabNavigation"
+import { enableScreens } from 'react-native-screens';
+enableScreens();
+import { NavigationContainer } from '@react-navigation/native'
 
 
 function App(): React.JSX.Element {
 
 
   return (
-    <SafeAreaView>
-      <Header></Header>
-    </SafeAreaView>
+    <NavigationContainer>
+      {/* <Text>fdasfcsdaff</Text> */}
+      {/* <Header /> */}
+      {/* <BottomTab /> */}
+      <RootStack />
+    </NavigationContainer>
   );
 }
 
