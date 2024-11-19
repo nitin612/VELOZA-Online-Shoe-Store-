@@ -78,7 +78,8 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     overflow: 'hidden',
   },
-  image: {
+  image: { 
+    
     width: 350,
     height: "100%",
     // justifyContent: 'flex-end',
