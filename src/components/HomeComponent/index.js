@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, ImageBackground, ScrollView, FlatList, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ImageBackground, ScrollView, FlatList, Image, SafeAreaView } from 'react-native';
 import React from 'react';
 import Header from "../HeaderComponent/index";
 
@@ -27,6 +27,7 @@ export default function Index({ navigation }) {
     )
     return (
         <ScrollView style={styles.container}>
+            <SafeAreaView>
             <ImageBackground
                 source={{ uri: "https://images.unsplash.com/photo-1509442233604-131901ff8d40?q=80&w=2432&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }}
                 style={styles.imageBackground}
@@ -34,7 +35,6 @@ export default function Index({ navigation }) {
             >
                 <Header />
             </ImageBackground>
-
 
             <View style={styles.scrollView}>
                 <FlatList data={images}
@@ -56,7 +56,7 @@ export default function Index({ navigation }) {
                     </TouchableOpacity>
                 </View>
             </View>
-
+            </SafeAreaView>
         </ScrollView>
     );
 }
@@ -66,13 +66,13 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     imageBackground: {
-        height: 450,
+        height: 460,
     },
     scrollView: {
         flex: 1,
         backgroundColor: "white",
-        borderTopLeftRadius: 50,
-        borderTopRightRadius: 50,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
         marginTop: -40, // Overlaps the ScrollView slightly over the ImageBackground
         paddingTop: 30,
         gap: 20
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     categoryCard: {
         backgroundColor: "gray",
         height: 250,
-        width: 170,
+        width: 180,
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 10,

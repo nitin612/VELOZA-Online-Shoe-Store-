@@ -2,15 +2,17 @@ import { ScrollView, StyleSheet, Text, View, TouchableOpacity, Image } from 'rea
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import FontAwesome6 from "react-native-vector-icons/FontAwesome6";
 
 export default function Cart() {
     return (
         <ScrollView>
             <SafeAreaView>
-                <View>
-                    <Text style={{ marginLeft: 10, fontSize: 35, fontWeight: '500' }}>Cart</Text>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginHorizontal: 10 }}>
+                    <Text style={{ fontSize: 35, fontWeight: '500' }}>Cart</Text>
+                    <FontAwesome6 name="heart" size={28} color={"#000000"} />
                 </View>
-                <View style={{borderBottomWidth:0.2,marginTop:5,borderBottomColor:'grey'}}/>
+                <View style={{ borderBottomWidth: 0.2, marginTop: 5, borderBottomColor: 'grey' }} />
                 <View style={styles.Cards}>
                     <View style={{ flexDirection: 'row' }}>
                         <Image style={styles.ProductImage}
@@ -44,7 +46,7 @@ export default function Cart() {
                             <TouchableOpacity style={styles.minplus}>
                                 <Text style={{ fontSize: 16 }}>-</Text>
                             </TouchableOpacity>
-                            <Text style={{ fontSize: 16,color:'#ffffff'}}>1</Text>
+                            <Text style={{ fontSize: 16, color: '#ffffff' }}>1</Text>
                             <TouchableOpacity style={styles.minplus}>
                                 <Text style={{ fontSize: 16 }}>+</Text>
                             </TouchableOpacity>

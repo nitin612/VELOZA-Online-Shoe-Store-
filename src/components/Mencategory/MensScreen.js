@@ -2,6 +2,7 @@ import { FlatList, StyleSheet, View, Text, ScrollView, TouchableOpacity } from '
 import React from 'react';
 import ProductDetails from '../Shared/ProductComponent/Index';
 import Header from "../HeaderComponent";
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Index = () => {
     const data = [
@@ -14,10 +15,11 @@ const Index = () => {
 
     const renderItem = ({ item }) => <ProductDetails imageUrl={item.imageUrl} />;
 
-    return (
+    return ( 
         <ScrollView contentContainerStyle={styles.container}>
             <Header />
             <Text style={styles.mainTitle}>Men's Collection</Text>
+            <View style={{ borderBottomWidth: 0.2,borderBottomColor: 'grey' }} />
             {['Casual Wear', 'Loafers', 'Sports Wear', 'Slippers'].map((category, index) => (
                 <View key={index} style={styles.categoryContainer}>
                     <TouchableOpacity>
@@ -49,7 +51,7 @@ const styles = StyleSheet.create({
         fontSize: 34,
         fontWeight: '800',
         color: '#333',
-        marginBottom: 15,
+        marginBottom: 10,
         textAlign: 'center',
     },
     categoryContainer: {

@@ -6,10 +6,12 @@ import {
   ImageBackground,
   ScrollView,
   TouchableOpacity,
+  SafeAreaView,
 } from 'react-native';
 // import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Header from "../HeaderComponent"
+import FontAwesome6 from "react-native-vector-icons/FontAwesome6";
 
 export default function Explore() {
   const images = [
@@ -36,30 +38,36 @@ export default function Explore() {
   ];
 
   return (
-    <View style={styles.container}>
-      <Header/>
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.scrollContainer}
-      >
-        {images.map((image) => (
-          <View key={image.id} style={styles.imageWrapper}>
-            <ImageBackground source={{ uri: image.uri }} style={styles.image}>
-              <TouchableOpacity style={styles.heartIcon}>
-                <Icon name="hearto" size={24} color="#fff" />
-              </TouchableOpacity>
-              {/* <LinearGradient
+    <SafeAreaView style={styles.container}>
+      <View>
+        <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',marginHorizontal:10}}>
+          <Text style={{fontSize: 35, fontWeight: '500' }}>Explore</Text>
+          <FontAwesome6 name="heart" size={28} color={"#000000"} />
+        </View>
+        <View style={{ borderBottomWidth: 0.2, marginTop: 5, borderBottomColor: 'grey',marginVertical:10}} />
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.scrollContainer}
+        >
+          {images.map((image) => (
+            <View key={image.id} style={styles.imageWrapper}>
+              <ImageBackground source={{ uri: image.uri }} style={styles.image}>
+                <TouchableOpacity style={styles.heartIcon}>
+                  <Icon name="hearto" size={24} color="#fff" />
+                </TouchableOpacity>
+                {/* <LinearGradient
                 colors={['transparent', 'rgba(0, 0, 0, 0.7)']}
                 style={styles.gradient}
               >
                 <Text style={styles.title}>{image.title}</Text>
               </LinearGradient> */}
-            </ImageBackground>
-          </View>
-        ))}
-      </ScrollView>
-    </View>
+              </ImageBackground>
+            </View>
+          ))}
+        </ScrollView>
+      </View>
+    </SafeAreaView>
   );
 }
 
@@ -78,10 +86,10 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     overflow: 'hidden',
   },
-  image: { 
-    
+  image: {
+
     width: 350,
-    height: "100%",
+    height: 600,
     // justifyContent: 'flex-end',
   },
   heartIcon: {
