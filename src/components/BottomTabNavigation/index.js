@@ -1,73 +1,108 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from "../HomeComponent/index";
-import HomeStack from "../../Stacks/HomeStack"
-import AntDesign from "react-native-vector-icons/AntDesign";
+import HomeStack from "../../Stacks/HomeStack";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import UserProfile from '../UserProfileCompponent/UserProfile';
+import FontAwesome6 from "react-native-vector-icons/FontAwesome6";
+import Cart from '../CartComponent/Cart';
+import Explore from '../ExploreComponent/Explore';
 
 const Index = () => {
     const Tab = createBottomTabNavigator();
 
     return (
-        <Tab.Navigator initialRouteName='HomeStack'
-            screenOptions={{
+        <Tab.Navigator
+            screenOptions={({ route }) => ({
+                tabBarActiveTintColor: '#000000',
+                tabBarInactiveTintColor: '#999999',
                 tabBarStyle: {
-                    backgroundColor: "gray",
-                    height: 50,
-                    margin: 20,
-                    borderRadius: 30,
-                    // paddingBottom: 10, // Add padding to center the icons vertically
+                    backgroundColor: '#343A40',
+                    borderTopWidth: 0,
+                    height: 65,
+                    marginBottom: 18,
+                    borderRadius: 50,
+                    position: 'absolute',
+                    marginHorizontal: 20,
+                    shadowColor: "#000000",
+                    shadowOffset: {
+                        width: 0,
+                        height: 6,
+                    },
+                    shadowOpacity: 0.37,
+                    shadowRadius: 7.49,
+                    elevation: 12,
                 },
-                tabBarActiveTintColor: "black",
-                tabBarInactiveTintColor: "white",
-                tabBarShowLabel: false, // Hide the label for all tabs
-                tabBarIconStyle: {
-                    alignSelf: "center", // Center the icon
+                tabBarLabelStyle: { fontSize: 12 },
+                tabBarIconStyle: { alignItems: 'center', justifyContent: 'center' },
+                tabBarItemStyle: { margin: 12 },
+                tabBarShowLabel: false,
+                tabBarIcon: ({ focused, color, size }) => {
+                    let iconName;
+
+                    switch (route.name) {
+                        case 'Home':
+                            iconName = 'home';
+                            return (
+                                <View style={[styles.iconContainer, focused && styles.activeIcon]}>
+                                    <Ionicons name={iconName} size={size || 24} color={focused ? color : '#999999'} />
+                                </View>
+                            );
+                        case 'explore':
+                            iconName = 'explore';
+                            return (
+                                <View style={[styles.iconContainer, focused && styles.activeIcon]}>
+                                    <MaterialIcons name={iconName} size={size || 24} color={focused ? color : '#999999'} />
+                                </View>
+                            );
+                        case 'Cart':
+                            iconName = 'bag-shopping';
+                            return (
+                                <View style={[styles.iconContainer, focused && styles.activeIcon]}>
+                                    <FontAwesome6 name={iconName} size={size || 24} color={focused ? color : '#999999'} />
+                                </View>
+                            );
+                        case 'Profile':
+                            iconName = 'user';
+                            return (
+                                <View style={[styles.iconContainer, focused && styles.activeIcon]}>
+                                    <FontAwesome name={iconName} size={size || 24} color={focused ? color : '#999999'} />
+                                </View>
+                            );
+                        default:
+                            return null;
+                    }
                 },
-            }}
+            })}
         >
             <Tab.Screen
-                name="HomeStack"
+                name="Home"
                 component={HomeStack}
                 options={{
                     headerShown: false,
-                    tabBarIcon: ({ color }) => (
-                        <AntDesign name="home" color={color} size={30} />
-                    ),
                 }}
             />
             <Tab.Screen
-                name="SearchScreen"
-                component={HomeScreen}
+                name="explore"
+                component={Explore}
                 options={{
                     headerShown: false,
-                    unmountOnBlur: true,
-                    tabBarIcon: ({ color }) => (
-                        <FontAwesome name="search" color={color} size={30} />
-                    ),
                 }}
             />
             <Tab.Screen
-                name="Explore"
-                component={HomeScreen}
+                name="Cart"
+                component={Cart}
                 options={{
                     headerShown: false,
-                    tabBarIcon: ({ color }) => (
-                        <FontAwesome5 name="hand-holding-heart" color={color} size={30} />
-                    ),
                 }}
             />
             <Tab.Screen
-                name="me"
-                component={HomeScreen}
+                name="Profile"
+                component={UserProfile}
                 options={{
                     headerShown: false,
-                    unmountOnBlur: true,
-                    tabBarIcon: ({ color }) => (
-                        <FontAwesome5 name="hand-holding-heart" color={color} size={30} />
-                    ),
                 }}
             />
         </Tab.Navigator>
@@ -75,3 +110,16 @@ const Index = () => {
 };
 
 export default Index;
+
+const styles = StyleSheet.create({
+    iconContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+    },
+    activeIcon: {
+        backgroundColor: '#ffffff',
+    },
+});

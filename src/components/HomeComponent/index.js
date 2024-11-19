@@ -1,34 +1,63 @@
-import { StyleSheet, Text, View, TouchableOpacity, ImageBackground, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ImageBackground, ScrollView, FlatList, Image } from 'react-native';
 import React from 'react';
 import Header from "../HeaderComponent/index";
 
 export default function Index({ navigation }) {
+    const images = [
+        "https://static.vecteezy.com/system/resources/previews/014/414/661/non_2x/nike-swoosh-logo-on-transparent-background-free-vector.jpg",
+        "https://i.pinimg.com/originals/02/17/84/021784071cf7eda82df43ae40c84df58.png",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCjnZQWP06eRzlHXuS2ksxe3U1r_g7Y7U82g&s",
+        "https://static.vecteezy.com/system/resources/previews/014/414/661/non_2x/nike-swoosh-logo-on-transparent-background-free-vector.jpg",
+        "https://i.pinimg.com/originals/02/17/84/021784071cf7eda82df43ae40c84df58.png",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCjnZQWP06eRzlHXuS2ksxe3U1r_g7Y7U82g&s",
+        "https://static.vecteezy.com/system/resources/previews/014/414/661/non_2x/nike-swoosh-logo-on-transparent-background-free-vector.jpg",
+        "https://i.pinimg.com/originals/02/17/84/021784071cf7eda82df43ae40c84df58.png",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCjnZQWP06eRzlHXuS2ksxe3U1r_g7Y7U82g&s",
+        "https://www.shutterstock.com/shutterstock/photos/2277477743/display_1500/stock-vector-shoes-company-logo-design-inspirations-2277477743.jpg"];
+
+    const renderItem = ({ item }) => (
+        <TouchableOpacity onPress={() => navigation.navigate("BrandSection")}>
+            <View style={{ borderRadius: 50, alignItems: "center", justifyContent: "center", borderWidth: 1, height: 80, width: 80, marginRight: 10 }} >
+                <Image source={{ uri: item }}
+                    style={{ height: 70, width: 70, borderRadius: 100 }}
+                    resizeMode="cover" />
+            </View>
+        </TouchableOpacity>
+
+    )
     return (
-        <View style={styles.container}>
-            {/* Top half with ImageBackground */}
+        <ScrollView style={styles.container}>
             <ImageBackground
-                source={{ uri: "https://5.imimg.com/data5/SELLER/Default/2023/10/353027032/OS/TU/JH/89328219/1408-wht-10-500x500.jpg" }}
+                source={{ uri: "https://images.unsplash.com/photo-1509442233604-131901ff8d40?q=80&w=2432&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }}
                 style={styles.imageBackground}
                 resizeMode="cover"
             >
                 <Header />
             </ImageBackground>
 
-            {/* Bottom half with ScrollView */}
-            <ScrollView contentContainerStyle={styles.scrollViewContent} style={styles.scrollView}>
-                <TouchableOpacity onPress={() => { navigation.navigate("MenCategory") }}>
-                    <View style={styles.categoryCard}>
-                        <Text style={styles.categoryText}>MEN</Text>
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate("WomenCategory")}>
-                    <View style={styles.categoryCard}>
-                        <Text style={styles.categoryText}>WOMEN</Text>
-                    </View>
-                </TouchableOpacity>
-                {/* Add more items here as needed */}
-            </ScrollView>
-        </View>
+
+            <View style={styles.scrollView}>
+                <FlatList data={images}
+                    renderItem={renderItem}
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false}
+                    style={{ marginHorizontal: 20 }}
+                />
+                <View style={styles.scrollViewContent}>
+                    <TouchableOpacity onPress={() => { navigation.navigate("MenCategory") }}>
+                        <View style={styles.categoryCard}>
+                            <Text style={styles.categoryText}>MEN</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate("WomenCategory")}>
+                        <View style={styles.categoryCard}>
+                            <Text style={styles.categoryText}>WOMEN</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+            </View>
+
+        </ScrollView>
     );
 }
 
@@ -37,8 +66,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     imageBackground: {
-        flex: 1.7, // Covers top part of the screen
-        justifyContent: "flex-start",
+        height: 450,
     },
     scrollView: {
         flex: 1,
@@ -47,6 +75,7 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 50,
         marginTop: -40, // Overlaps the ScrollView slightly over the ImageBackground
         paddingTop: 30,
+        gap: 20
     },
     scrollViewContent: {
         paddingHorizontal: 20,
