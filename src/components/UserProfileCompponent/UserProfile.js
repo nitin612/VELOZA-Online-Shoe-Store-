@@ -1,13 +1,15 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { IMAGES } from '../../utils/Images'
 
 export default function UserProfile() {
     return (
         <ScrollView >
             <View style={{ marginTop: 58 }}>
                 <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontSize: 35, fontWeight: '500' }}>VELOZA</Text>
+                <Image style={{width:150,height:50}}
+                    source={IMAGES.logo2} />
                 </View>
                 <View style={{ borderBottomWidth: 0.2, marginTop: 6 }} />
                 <Image

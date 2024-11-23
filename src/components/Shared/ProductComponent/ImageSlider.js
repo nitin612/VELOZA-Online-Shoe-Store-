@@ -1,38 +1,37 @@
-
-
-import * as React from 'react';
-import { Dimensions, Text, View } from 'react-native';
+import React from 'react';
+import { Dimensions, View, ImageBackground } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 
-function ImageSlider() {
+// Reusable ImageSlider component
+function ImageSlider({ images }) {
     const width = Dimensions.get('window').width;
+
     return (
-        <View style={{ flex: 1 }}>
+        // <View style={{ flex: 1 }}>
             <Carousel
                 loop
-                width={width}
+                width={width/2}
                 height={width / 2}
                 autoPlay={true}
-                data={[...new Array(6).keys()]}
+                data={images}
                 scrollAnimationDuration={1000}
-
                 onSnapToItem={(index) => console.log('current index:', index)}
                 renderItem={({ index }) => (
                     <View
                         style={{
                             flex: 1,
                             borderWidth: 1,
-                            justifyContent: 'center',
-                            margin: 10, borderRadius: 30
                         }}
                     >
-                        <Text style={{ textAlign: 'center', fontSize: 30 }}>
-                            {index}
-                        </Text>
+                        <ImageBackground
+                            source={{ uri: images[index] }}
+                            style={{ flex: 1 }}
+                            resizeMode="cover"
+                        />
                     </View>
                 )}
             />
-        </View>
+        // </View>
     );
 }
 

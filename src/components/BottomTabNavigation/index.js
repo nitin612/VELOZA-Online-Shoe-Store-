@@ -20,6 +20,7 @@ const Index = () => {
                 tabBarInactiveTintColor: '#999999',
                 tabBarStyle: {
                     backgroundColor: '#343A40',
+                    // backgroundColor: '#000000',
                     borderTopWidth: 0,
                     height: 65,
                     marginBottom: 18,

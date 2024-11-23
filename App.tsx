@@ -17,17 +17,19 @@ import BottomTab from "./src/components/BottomTabNavigation"
 import { enableScreens } from 'react-native-screens';
 enableScreens();
 import { NavigationContainer } from '@react-navigation/native'
-
+import LoginScreen from './src/components/LoginComponent/LoginScreen';
+import SignupScreen from './src/components/SignUpComponent/SignupScreen';
+import { useSharedValue } from 'react-native-reanimated';
 
 function App(): React.JSX.Element {
-
+const isLogin=useSharedValue(0)
 
   return (
     <NavigationContainer>
-      {/* <Text>fdasfcsdaff</Text> */}
-      {/* <Header /> */}
-      {/* <BottomTab /> */}
+     {/* <ImageSlider/> */}
       <RootStack />
+      {/* <SignupScreen/> */}
+      {/* <LoginScreen/> */}
     </NavigationContainer>
   );
 }
@@ -39,7 +41,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 24,
-    fontWeight: '600',
+    fontWeight: '500',
   },
   sectionDescription: {
     marginTop: 8,

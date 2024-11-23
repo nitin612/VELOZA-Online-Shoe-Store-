@@ -16,8 +16,8 @@ const Index = () => {
     const renderItem = ({ item }) => <ProductDetails imageUrl={item.imageUrl} />;
 
     return ( 
+        <SafeAreaView>
         <ScrollView contentContainerStyle={styles.container}>
-            <Header />
             <Text style={styles.mainTitle}>Men's Collection</Text>
             <View style={{ borderBottomWidth: 0.2,borderBottomColor: 'grey' }} />
             {['Casual Wear', 'Loafers', 'Sports Wear', 'Slippers'].map((category, index) => (
@@ -36,6 +36,7 @@ const Index = () => {
                 </View>
             ))}
         </ScrollView>
+        </SafeAreaView>
     );
 };
 
@@ -48,10 +49,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#f9f9f9',
     },
     mainTitle: {
-        fontSize: 34,
-        fontWeight: '800',
-        color: '#333',
-        marginBottom: 10,
+        fontSize: 30,
+        fontWeight: '700',
+        color: '#000000',
+        marginBottom: 8,
         textAlign: 'center',
     },
     categoryContainer: {
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     listContainer: {
-        gap: 10,
+        gap: 5,
         paddingLeft: 5,
     },
 });

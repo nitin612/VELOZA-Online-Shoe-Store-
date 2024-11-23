@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, FlatList } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, FlatList, SafeAreaView } from 'react-native';
 import React from 'react';
 import Header from "../HeaderComponent";
 import ProductDetails from '../Shared/ProductComponent/Index';
@@ -15,10 +15,10 @@ const Index = () => {
     const renderItem = ({ item }) => <ProductDetails imageUrl={item.imageUrl} />;
 
     return (
+        <SafeAreaView>
         <ScrollView contentContainerStyle={styles.container}>
-            <Header />
             <Text style={styles.mainTitle}>Women's Collection</Text>
-
+            <View style={{ borderBottomWidth: 0.2,borderBottomColor: 'grey' }} />
             {['Flats', 'Heels', 'Sandals', 'Slipper'].map((category, index) => (
                 <View key={index} style={styles.categoryContainer}>
                     <TouchableOpacity>
@@ -35,6 +35,7 @@ const Index = () => {
                 </View>
             ))}
         </ScrollView>
+        </SafeAreaView>
     );
 };
 
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         color: '#222',
         textAlign: 'center',
-        marginBottom: 20,
+        marginBottom: 8,
     },
     categoryContainer: {
         marginBottom: 25,
